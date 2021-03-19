@@ -9,7 +9,9 @@ buildscript {
         classpath "com.android.tools.build:gradle:4.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
+        // 用于上传项目到bintray
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        // 用于生成javaDoc和jar
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
