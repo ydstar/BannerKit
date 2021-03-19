@@ -1,0 +1,3 @@
+include ':banner-kit'
+include ':app'
+rootProject.name = "BannerKit"
