@@ -45,25 +45,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initView(hiIndicator: IIndicator<*>?, autoPlay: Boolean) {
-        this.mIndicator = hiIndicator
-        val mBanner = findViewById<IBanner>(R.id.banner)
+    private fun initView(indicator: IIndicator<*>?, autoPlay: Boolean) {
+        this.mIndicator = indicator
+        val banner = findViewById<IBanner>(R.id.banner)
         val moList: MutableList<IBannerModel> = ArrayList()
         for (i in 0..mUrlList.size -1) {
             val mo = BannerModel()
             mo.url = mUrlList[i]
             moList.add(mo)
         }
-        mBanner!!.setIndicator(hiIndicator)
-        mBanner.setAutoPlay(autoPlay)
-        mBanner.setIntervalTime(2000)
-        mBanner.setLoop(true)
+        banner!!.setIndicator(indicator)
+        banner.setAutoPlay(autoPlay)
+        banner.setIntervalTime(2000)
+        banner.setLoop(true)
 
         //自定义布局
-        mBanner.setBannerData(R.layout.banner_item_layout, moList)
+        banner.setBannerData(R.layout.banner_item_layout, moList)
 
         //绑定数据
-        mBanner.setBindAdapter { viewHolder, mo, position ->
+        banner.setBindAdapter { viewHolder, mo, position ->
             val imageView: ImageView = viewHolder.findViewById(R.id.iv_image)
             Glide.with(this@MainActivity).load(mo.url).into(imageView)
             val titleView: TextView = viewHolder.findViewById(R.id.tv_title)
