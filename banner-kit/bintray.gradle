@@ -8,7 +8,7 @@ def gitUrl = 'https://github.com/ydstar/BannerKit.git'
 //仓库组
 group = 'com.android.ydkit'//名字可以随便起
 //版本
-version = '1.0.0'
+version = '1.0.4'
 install {
     repositories.mavenInstaller {
         pom {
@@ -60,7 +60,7 @@ bintray {
     configurations = ['archives']
     pkg {
         version {
-            name = '1.0.0'
+            name = '1.0.4'
             desc = '轻量级轮播图组件'
         }
         repo = 'BannerKitRepo' //repository 仓库名称,要能对应上
@@ -74,12 +74,12 @@ bintray {
                 sign = true //Determines whether to GPG sign the files. The default is false
                 passphrase = properties.getProperty("bintray.gpg.password") //Optional. The passphrase for GPG signing'
             }
-//            mavenCentralSync {
-//                sync = true //Optional (true by default). Determines whether to sync the version to Maven Central.
-//                user = properties.getProperty("bintray.oss.user") //OSS user token
-//                password = properties.getProperty("bintray.oss.password") //OSS user password
-//                close = '1' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
-//            }
+            mavenCentralSync {
+                sync = true //Optional (true by default). Determines whether to sync the version to Maven Central.
+                user = properties.getProperty("bintray.oss.user") //OSS user token
+                password = properties.getProperty("bintray.oss.password") //OSS user password
+                close = '1' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
+            }
         }
     }
 }

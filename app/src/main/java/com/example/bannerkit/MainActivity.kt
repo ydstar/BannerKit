@@ -17,14 +17,10 @@ import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private var mUrlList = arrayOf(
-        "https://www.devio.org/img/beauty_camera/beauty_camera1.jpg",
-        "https://www.devio.org/img/beauty_camera/beauty_camera3.jpg",
-        "https://www.devio.org/img/beauty_camera/beauty_camera4.jpg",
-        "https://www.devio.org/img/beauty_camera/beauty_camera5.jpg",
-        "https://www.devio.org/img/beauty_camera/beauty_camera2.jpg",
-        "https://www.devio.org/img/beauty_camera/beauty_camera6.jpg",
-        "https://www.devio.org/img/beauty_camera/beauty_camera7.jpg",
-        "https://www.devio.org/img/beauty_camera/beauty_camera8.jpeg"
+        "http://pic.618mt.com/d/file/bigpic/2021/03/18/0iwxicj1y4u.jpg",
+        "http://pic.618mt.com/d/file/bigpic/2021/03/18/w3yqazfxfgu.jpg",
+        "http://pic.618mt.com/d/file/bigpic/2021/03/18/vyluj1n4bap.jpg",
+        "http://pic.618mt.com/d/file/bigpic/2021/03/18/ql1lao3dquv.jpg"
     )
 
     private var mIndicator: IIndicator<*>? = null
@@ -41,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<View>(R.id.tv_switch).setOnClickListener {
-            //mHiBanner.setAutoPlay(false)
             if (mIndicator is ICircleIndicator) {
                 initView(INumIndicator(this), mAutoPlay)
             } else {
@@ -54,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         this.mIndicator = hiIndicator
         val mBanner = findViewById<IBanner>(R.id.banner)
         val moList: MutableList<IBannerModel> = ArrayList()
-        for (i in 0..6) {
+        for (i in 0..mUrlList.size -1) {
             val mo = BannerModel()
             mo.url = mUrlList[i]
             moList.add(mo)

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <base-config cleartextTrafficPermitted="true" /><!-- 允许在7.0以上版本支持明文传输 -->
+    <!-- 允许明文传输,安卓6.0默认是明文传输是打开的,然后也信任用户安装的证书,7.0不在信任用户安装的证书,到了9.0把明文传输也关闭了,所以我们自定义网络安全配置-->
+<!--  debug-overrides是只有在客户单的debuggable 属性为true的情况下 才会信任这里的证书  -->
+
+</network-security-config>
