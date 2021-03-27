@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="切换指示器"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@color/colorAccent"
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/banner" />
@@ -33,7 +33,7 @@
         android:layout_marginTop="50dp"
         android:text="是否自动播放"
         android:layout_marginLeft="30dp"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@color/colorAccent"
         android:textSize="20dp"
         app:layout_constraintLeft_toRightOf="@id/tv_switch"
         app:layout_constraintTop_toBottomOf="@id/banner" />
