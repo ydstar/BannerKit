@@ -7,11 +7,11 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
-import com.banner.kit.banner.IBanner
-import com.banner.kit.core.adapter.IBannerModel
-import com.banner.kit.indicator.ICircleIndicator
-import com.banner.kit.indicator.IIndicator
-import com.banner.kit.indicator.INumIndicator
+import com.banner.kit.banner.BannerKit
+
+import com.banner.kit.core.adapter.BannerModel
+
+import com.banner.kit.indicator.*
 import com.bumptech.glide.Glide
 import java.util.ArrayList
 
@@ -23,13 +23,13 @@ class MainActivity : AppCompatActivity() {
         "http://pic.618mt.com/d/file/bigpic/2021/03/18/ql1lao3dquv.jpg"
     )
 
-    private var mIndicator: IIndicator<*>? = null
+    private var mIndicator: BannerIndicator<*>? = null
     private var mAutoPlay: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initView(ICircleIndicator(this), false)
+        initView(CircleIndicator(this), false)
 
         findViewById<Switch>(R.id.auto_play).setOnCheckedChangeListener { _, isChecked ->
             mAutoPlay = isChecked
@@ -37,20 +37,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<View>(R.id.tv_switch).setOnClickListener {
-            if (mIndicator is ICircleIndicator) {
-                initView(INumIndicator(this), mAutoPlay)
+            if (mIndicator is CircleIndicator) {
+                initView(NumIndicator(this), mAutoPlay)
             } else {
-                initView(ICircleIndicator(this), mAutoPlay)
+                initView(CircleIndicator(this), mAutoPlay)
             }
         }
     }
 
-    private fun initView(indicator: IIndicator<*>?, autoPlay: Boolean) {
+    private fun initView(indicator: BannerIndicator<*>?, autoPlay: Boolean) {
         this.mIndicator = indicator
-        val banner = findViewById<IBanner>(R.id.banner)
-        val moList: MutableList<IBannerModel> = ArrayList()
+        val banner = findViewById<BannerKit>(R.id.banner)
+        val moList: MutableList<BannerModel> = ArrayList()
         for (i in 0..mUrlList.size -1) {
-            val mo = BannerModel()
+            val mo = Model()
             mo.url = mUrlList[i]
             moList.add(mo)
         }

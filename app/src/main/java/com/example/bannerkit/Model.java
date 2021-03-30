@@ -1,7 +1,7 @@
 package com.example.bannerkit;
 
 
-import com.banner.kit.core.adapter.IBannerModel;
+import com.banner.kit.core.adapter.BannerModel;
 
 /**
  * Author: 信仰年轻
@@ -9,5 +9,5 @@ import com.banner.kit.core.adapter.IBannerModel;
  * Email: hydznsqk@163.com
  * Des:
  */
-public class BannerModel extends IBannerModel {
+public class Model extends BannerModel {
 }

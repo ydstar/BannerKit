@@ -10,8 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
 import com.banner.kit.R;
-import com.banner.kit.core.adapter.IBannerModel;
-import com.banner.kit.indicator.IIndicator;
+import com.banner.kit.core.adapter.BannerModel;
+import com.banner.kit.indicator.BannerIndicator;
 
 import java.util.List;
 
@@ -28,22 +28,22 @@ import java.util.List;
  *     4.添加IViewPager到该容器
  *     5.添加IIndicator到该容器
  */
-public class IBanner extends FrameLayout implements IBannerInter{
+public class BannerKit extends FrameLayout implements IBannerInter{
 
-    private IBannerDelegate mDelegate;
+    private BannerDelegate mDelegate;
 
-    public IBanner(@NonNull Context context) {
+    public BannerKit(@NonNull Context context) {
         this(context,null);
     }
 
-    public IBanner(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public BannerKit(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public IBanner(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public BannerKit(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        mDelegate = new IBannerDelegate(context,this);
+        mDelegate = new BannerDelegate(context,this);
         initCustomAttrs(context, attrs);
     }
     private void initCustomAttrs(Context context, AttributeSet attrs) {
@@ -58,17 +58,17 @@ public class IBanner extends FrameLayout implements IBannerInter{
     }
 
     @Override
-    public void setBannerData(int layoutResId, @NonNull List<? extends IBannerModel> data) {
+    public void setBannerData(int layoutResId, @NonNull List<? extends BannerModel> data) {
         mDelegate.setBannerData(layoutResId,data);
     }
 
     @Override
-    public void setBannerData(@NonNull List<? extends IBannerModel> data) {
+    public void setBannerData(@NonNull List<? extends BannerModel> data) {
         mDelegate.setBannerData(data);
     }
 
     @Override
-    public void setIndicator(IIndicator indicator) {
+    public void setIndicator(BannerIndicator indicator) {
         mDelegate.setIndicator(indicator);
     }
 

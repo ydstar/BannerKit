@@ -37,7 +37,7 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
-//    implementation project(path: ':banner-kit')
+    implementation project(path: ':banner-kit')
 
-    implementation 'com.android.ydkit:banner-kit:1.0.0'
+//    implementation 'com.android.ydkit:banner-kit:1.0.0'
 }

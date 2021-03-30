@@ -9,13 +9,13 @@ import android.widget.Scroller;
  * Email: hydznsqk@163.com
  * Des: 黑科技用于设置滚动的时长
  */
-public class IBannerScroller extends Scroller {
+public class BannerScroller extends Scroller {
     /**
      * 值越大，滑动越慢
      */
     private int mDuration = 1000;
 
-    public IBannerScroller(Context context, int duration) {
+    public BannerScroller(Context context, int duration) {
         super(context);
         mDuration = duration;
     }

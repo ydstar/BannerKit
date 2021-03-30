@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 
 
-import com.banner.kit.core.adapter.IBannerAdapter;
-import com.banner.kit.core.scroller.IBannerScroller;
+import com.banner.kit.core.adapter.BannerAdapter;
+import com.banner.kit.core.scroller.BannerScroller;
 
 import java.lang.reflect.Field;
 
@@ -20,7 +20,7 @@ import java.lang.reflect.Field;
  * Email: hydznsqk@163.com
  * Des: 实现了自动翻页的ViewPager
  */
-public class IViewPager extends ViewPager {
+public class MyViewPager extends ViewPager {
 
     //轮播的间隔时间
     private int mIntervalTime;
@@ -31,7 +31,7 @@ public class IViewPager extends ViewPager {
     private boolean isLayout;
     private Handler mHandler = new Handler();
 
-    public IViewPager(@NonNull Context context) {
+    public MyViewPager(@NonNull Context context) {
         super(context);
     }
 
@@ -98,7 +98,7 @@ public class IViewPager extends ViewPager {
         nextPosition=getCurrentItem()+1;
         //下一个索引大于adapter的view的最大数量时重新开始
         if(nextPosition>=getAdapter().getCount()){
-            nextPosition = ((IBannerAdapter) getAdapter()).getFirstItem();
+            nextPosition = ((BannerAdapter) getAdapter()).getFirstItem();
         }
 
         setCurrentItem(nextPosition,true);
@@ -133,9 +133,9 @@ public class IViewPager extends ViewPager {
      */
     public void setScrollDuration(int duration) {
         try {
-            Field scrollerField = ViewPager.class.getDeclaredField("mScroller");
+            Field scrollerField = MyViewPager.class.getDeclaredField("mScroller");
             scrollerField.setAccessible(true);
-            scrollerField.set(this, new IBannerScroller(getContext(), duration));
+            scrollerField.set(this, new BannerScroller(getContext(), duration));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -149,7 +149,7 @@ public class IViewPager extends ViewPager {
         if (isLayout && getAdapter() != null && getAdapter().getCount() > 0) {
             try {
                 //fix 使用RecyclerView + ViewPager bug https://blog.csdn.net/u011002668/article/details/72884893
-                Field mScroller = ViewPager.class.getDeclaredField("mFirstLayout");
+                Field mScroller = MyViewPager.class.getDeclaredField("mFirstLayout");
                 mScroller.setAccessible(true);
                 mScroller.set(this, false);
             } catch (Exception e) {

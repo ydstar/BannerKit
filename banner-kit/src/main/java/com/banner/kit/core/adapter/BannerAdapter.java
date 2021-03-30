@@ -22,11 +22,11 @@ import java.util.List;
  * Email: hydznsqk@163.com
  * Des: iViewPager的适配器，为页面填充数据
  */
-public class IBannerAdapter extends PagerAdapter {
+public class BannerAdapter extends PagerAdapter {
 
     private Context mContext;
     private SparseArray<IBannerViewHolder> mCachedViews = new SparseArray<>();
-    private List<? extends IBannerModel> mDataList;
+    private List<? extends BannerModel> mDataList;
 
     //布局资源ID
     private int mLayoutResId = -1;
@@ -43,7 +43,7 @@ public class IBannerAdapter extends PagerAdapter {
     //轮播图点击事件的回调接口
     private IBannerInter.OnBannerClickListener mBannerClickListener;
 
-    public IBannerAdapter(@NonNull Context mContext) {
+    public BannerAdapter(@NonNull Context mContext) {
         this.mContext = mContext;
     }
 
@@ -53,7 +53,7 @@ public class IBannerAdapter extends PagerAdapter {
      *
      * @param list
      */
-    public void setBannerData(List<? extends IBannerModel> list) {
+    public void setBannerData(List<? extends BannerModel> list) {
         this.mDataList = list;
         initCachedView();
         notifyDataSetChanged();
@@ -174,7 +174,7 @@ public class IBannerAdapter extends PagerAdapter {
         return viewHolder.mRootView;
     }
 
-    private void onBind(final IBannerViewHolder viewHolder, final IBannerModel model, final int realPosition) {
+    private void onBind(final IBannerViewHolder viewHolder, final BannerModel model, final int realPosition) {
         if (mBindAdapter != null) {
             //让外界去绑定数据
             mBindAdapter.onBind(viewHolder, model, realPosition);

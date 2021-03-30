@@ -4,9 +4,9 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 
-import com.banner.kit.core.adapter.IBannerAdapter;
-import com.banner.kit.core.adapter.IBannerModel;
-import com.banner.kit.indicator.IIndicator;
+import com.banner.kit.core.adapter.BannerAdapter;
+import com.banner.kit.core.adapter.BannerModel;
+import com.banner.kit.indicator.BannerIndicator;
 
 import java.util.List;
 
@@ -22,21 +22,21 @@ public interface IBannerInter {
      * 设置轮播图的数据
      * @param data 数据
      */
-    void setBannerData(@NonNull List<? extends IBannerModel> data);
+    void setBannerData(@NonNull List<? extends BannerModel> data);
 
     /**
      * 设置轮播图的数据
      * @param layoutResId 轮播图布局
      * @param data 数据
      */
-    void setBannerData(@LayoutRes int layoutResId, @NonNull List<? extends IBannerModel> data);
+    void setBannerData(@LayoutRes int layoutResId, @NonNull List<? extends BannerModel> data);
 
 
     /**
      * 设置指示器
      * @param iIndicator
      */
-    void setIndicator(IIndicator iIndicator);
+    void setIndicator(BannerIndicator iIndicator);
 
     /**
      * 设置自动轮播
@@ -83,6 +83,6 @@ public interface IBannerInter {
 
 
     interface OnBannerClickListener {
-        void onBannerClick(@NonNull IBannerAdapter.IBannerViewHolder viewHolder, @NonNull IBannerModel model, int position);
+        void onBannerClick(@NonNull BannerAdapter.IBannerViewHolder viewHolder, @NonNull BannerModel model, int position);
     }
 }

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.banner.kit.util.IDisplayUtil;
+import com.banner.kit.util.DisplayUtil;
 
 
 /**
@@ -20,7 +20,7 @@ import com.banner.kit.util.IDisplayUtil;
  * Email: hydznsqk@163.com
  * Des: 数字指示器
  */
-public class INumIndicator extends FrameLayout implements IIndicator<FrameLayout> {
+public class NumIndicator extends FrameLayout implements BannerIndicator<FrameLayout> {
     private static final int VWC = ViewGroup.LayoutParams.WRAP_CONTENT;
     /**
      * 指示点左右内间距
@@ -33,22 +33,22 @@ public class INumIndicator extends FrameLayout implements IIndicator<FrameLayout
     private int mPointTopBottomPadding;
 
 
-    public INumIndicator(Context context) {
+    public NumIndicator(Context context) {
         this(context, null);
     }
 
-    public INumIndicator(Context context, @Nullable AttributeSet attrs) {
+    public NumIndicator(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public INumIndicator(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public NumIndicator(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     private void init() {
-        mPointLeftRightPadding = IDisplayUtil.dp2px(10, getContext().getResources());
-        mPointTopBottomPadding = IDisplayUtil.dp2px(10, getContext().getResources());
+        mPointLeftRightPadding = DisplayUtil.dp2px(10, getContext().getResources());
+        mPointTopBottomPadding = DisplayUtil.dp2px(10, getContext().getResources());
     }
 
     @Override

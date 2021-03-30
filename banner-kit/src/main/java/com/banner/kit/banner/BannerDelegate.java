@@ -7,11 +7,11 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.ViewPager;
 
 import com.banner.kit.R;
-import com.banner.kit.core.adapter.IBannerAdapter;
-import com.banner.kit.core.adapter.IBannerModel;
-import com.banner.kit.core.pager.IViewPager;
-import com.banner.kit.indicator.ICircleIndicator;
-import com.banner.kit.indicator.IIndicator;
+import com.banner.kit.core.adapter.BannerAdapter;
+import com.banner.kit.core.adapter.BannerModel;
+import com.banner.kit.core.pager.MyViewPager;
+import com.banner.kit.indicator.CircleIndicator;
+import com.banner.kit.indicator.BannerIndicator;
 
 import java.util.List;
 
@@ -23,17 +23,17 @@ import java.util.List;
  * Des:辅助iBanner完成各种功能的控制
  * 将iBanner的一些逻辑内聚在这，保证暴露给使用者的iBanner干净整洁
  */
-public class IBannerDelegate implements IBannerInter, ViewPager.OnPageChangeListener {
+public class BannerDelegate implements IBannerInter, ViewPager.OnPageChangeListener {
 
     private Context mContext;
-    private IBanner mBanner;
+    private BannerKit mBanner;
 
-    private List<? extends IBannerModel> mDataList;
-    private IBannerAdapter mAdapter;
-    private IViewPager mViewPager;
+    private List<? extends BannerModel> mDataList;
+    private BannerAdapter mAdapter;
+    private MyViewPager mViewPager;
 
     //指示器
-    private IIndicator mIndicator;
+    private BannerIndicator mIndicator;
     //是否自动播放
     private boolean mAutoPlay;
     //播放间隔时间
@@ -45,21 +45,21 @@ public class IBannerDelegate implements IBannerInter, ViewPager.OnPageChangeList
     //pagerChange的监听
     private ViewPager.OnPageChangeListener mOnPageChangeListener;
     //轮播图点击的回调接口
-    private IBanner.OnBannerClickListener mOnBannerClickListener;
+    private BannerKit.OnBannerClickListener mOnBannerClickListener;
 
-    public IBannerDelegate(Context context, IBanner iBanner) {
+    public BannerDelegate(Context context, BannerKit iBanner) {
         this.mContext = context;
         this.mBanner = iBanner;
     }
 
     @Override
-    public void setBannerData(@NonNull List<? extends IBannerModel> data) {
+    public void setBannerData(@NonNull List<? extends BannerModel> data) {
         setBannerData(R.layout.i_banner_item_image, data);
 
     }
 
     @Override
-    public void setBannerData(int layoutResId, @NonNull List<? extends IBannerModel> data) {
+    public void setBannerData(int layoutResId, @NonNull List<? extends BannerModel> data) {
         if(data==null){
             throw new RuntimeException("轮播图数据不能为空");
         }
@@ -68,7 +68,7 @@ public class IBannerDelegate implements IBannerInter, ViewPager.OnPageChangeList
     }
 
     @Override
-    public void setIndicator(IIndicator indicator) {
+    public void setIndicator(BannerIndicator indicator) {
         if(indicator==null){
             throw new RuntimeException("指示器不能为空");
         }
@@ -95,7 +95,7 @@ public class IBannerDelegate implements IBannerInter, ViewPager.OnPageChangeList
     @Override
     public void setBindAdapter(IBindAdapter bindAdapter) {
         if (mAdapter == null) {
-            mAdapter = new IBannerAdapter(mContext);
+            mAdapter = new BannerAdapter(mContext);
         }
         mAdapter.setBindAdapter(bindAdapter);
     }
@@ -117,7 +117,7 @@ public class IBannerDelegate implements IBannerInter, ViewPager.OnPageChangeList
     public void setOnBannerClickListener(OnBannerClickListener onBannerClickListener) {
         this.mOnBannerClickListener = onBannerClickListener;
         if (mAdapter == null) {
-            mAdapter = new IBannerAdapter(mContext);
+            mAdapter = new BannerAdapter(mContext);
         }
         mAdapter.setBannerClickListener(mOnBannerClickListener);
     }
@@ -127,10 +127,10 @@ public class IBannerDelegate implements IBannerInter, ViewPager.OnPageChangeList
      */
     private void init(int layoutResId) {
         if (mAdapter == null) {
-            mAdapter = new IBannerAdapter(mContext);
+            mAdapter = new BannerAdapter(mContext);
         }
         if (mIndicator == null) {
-            mIndicator = new ICircleIndicator(mContext);
+            mIndicator = new CircleIndicator(mContext);
         }
         mIndicator.onInflate(mDataList.size());
 
@@ -142,7 +142,7 @@ public class IBannerDelegate implements IBannerInter, ViewPager.OnPageChangeList
             mAdapter.setBannerClickListener(mOnBannerClickListener);
         }
 
-        mViewPager = new IViewPager(mContext);
+        mViewPager = new MyViewPager(mContext);
         mViewPager.setIntervalTime(mIntervalTime);
         mViewPager.addOnPageChangeListener(this);
         mViewPager.setAutoPlay(mAutoPlay);

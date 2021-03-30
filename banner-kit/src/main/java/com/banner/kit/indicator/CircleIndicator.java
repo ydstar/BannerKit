@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.banner.kit.R;
-import com.banner.kit.util.IDisplayUtil;
+import com.banner.kit.util.DisplayUtil;
 
 
 /**
@@ -22,8 +22,8 @@ import com.banner.kit.util.IDisplayUtil;
  * Email: hydznsqk@163.com
  * Des: 圆形指示器 java版本
  */
-public class ICircleIndicator extends FrameLayout
-        implements IIndicator<FrameLayout> {
+public class CircleIndicator extends FrameLayout
+        implements BannerIndicator<FrameLayout> {
 
 
     private static final int VWC = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -51,22 +51,22 @@ public class ICircleIndicator extends FrameLayout
     private int mPointTopBottomPadding;
 
 
-    public ICircleIndicator(@NonNull Context context) {
+    public CircleIndicator(@NonNull Context context) {
         this(context, null);
     }
 
-    public ICircleIndicator(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public CircleIndicator(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ICircleIndicator(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CircleIndicator(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
     private void init(Context context) {
-        mPointLeftRightPadding = IDisplayUtil.dp2px(5f, context.getResources());
-        mPointTopBottomPadding = IDisplayUtil.dp2px(15f, context.getResources());
+        mPointLeftRightPadding = DisplayUtil.dp2px(5f, context.getResources());
+        mPointTopBottomPadding = DisplayUtil.dp2px(15f, context.getResources());
     }
 
 

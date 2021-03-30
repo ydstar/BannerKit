@@ -6,6 +6,6 @@ package com.banner.kit.core.adapter;
  * Email: hydznsqk@163.com
  * Des:iBanner的实体类，继承该实体类来实现自己的Model
  */
-public abstract class IBannerModel {
+public abstract class BannerModel {
     public String url;
 }

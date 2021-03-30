@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
 
-    <com.banner.kit.banner.IBanner
+    <com.banner.kit.banner.BannerKit
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="180dp"

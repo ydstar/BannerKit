@@ -8,7 +8,7 @@ import android.view.View;
  * Email: hydznsqk@163.com
  * Des: 指示器的顶层接口,实现该接口来定义你需要样式的指示器
  */
-public interface IIndicator<T extends View> {
+public interface BannerIndicator<T extends View> {
     T get();
 
     /**
