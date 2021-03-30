@@ -24,7 +24,7 @@ YdKit 是一组功能丰富的 Android 通用组件。
 仅支持`AndroidX`
 ```
 dependencies {
-     implementation 'com.android.ydkit:banner-kit:1.0.0'
+     implementation 'com.android.ydkit:banner-kit:1.0.5'
 }
 ```
 
@@ -39,7 +39,7 @@ dependencies {
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.banner.kit.banner.IBanner
+    <com.banner.kit.banner.BannerKit
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="180dp"
@@ -55,18 +55,18 @@ dependencies {
 
 定义bannerModel
 ```
-public class BannerModel extends IBannerModel {
+public class Model extends BannerModel {
 }
 
 ```
 
 轮播图使用
 ```java
-        val banner = findViewById<IBanner>(R.id.banner)
+        val banner = findViewById<BannerKit>(R.id.banner)
         var indicator = ICircleIndicator(this)
-        val moList: MutableList<IBannerModel> = ArrayList()
+        val moList: MutableList<BannerModel> = ArrayList()
         for (i in 0..mUrlList.size -1) {
-            val mo = BannerModel()
+            val mo = Model()
             mo.url = mUrlList[i]
             moList.add(mo)
         }
